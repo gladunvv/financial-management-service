@@ -1,13 +1,11 @@
-from django.utils.translation import ugettext as _
+from django.utils.translation import gettext_lazy as _
 from django.conf import settings
 from django.db import models
-
-from datetime import datetime
 
 
 class Wallet(models.Model):
 
-    name = models.CharField(_('Wallet name'), max_length=20, unique=True)
+    name = models.CharField('Wallet name', max_length=20, unique=True)
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         related_name='wallets',
@@ -25,7 +23,10 @@ class Wallet(models.Model):
         verbose_name_plural = _('Wallets')
 
     def __str__(self):
-        return self.name + ' Ballance: ' +  str(self.balance) + ' ' + 'RUB'
+        return 'Wallet {name} balance: {balance}'.format(
+            name=self.name,
+            balance=self.balance
+            )
 
     def can_send(self, amount, type_trans):
         """Check шs a write-off operation possible"""
@@ -68,7 +69,7 @@ class Transaction(models.Model):
         on_delete=models.CASCADE
     )
     type_trans = models.CharField(
-        _('Transaction type'),
+        'Transaction type',
         choices=TYPE_TRANSACTION_CHOICES,
         max_length=20
     )
@@ -79,12 +80,7 @@ class Transaction(models.Model):
         ordering = ('-date_time',)
 
     def __str__(self):
-        return '%s %s %s %s' % (
-            self.type_trans,
-            str(self.amount),
-            'RUB',
-            self.date_time.strftime("%d.%m.%Y, %H:%M:%S")
-            )
+        return 'Transfer: {}'.fromat(self.amount)
 
     def save(self, *args, **kwargs):
         """Checking the validity of the operation"""

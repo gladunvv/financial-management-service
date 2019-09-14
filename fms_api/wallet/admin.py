@@ -4,14 +4,14 @@ from wallet.models import Wallet, Transaction
 
 @admin.register(Wallet)
 class WalletAdmin(admin.ModelAdmin):
-    
+
     readonly_fields = ('balance',)
 
     list_display = ['name', 'balance']
 
     search_fields = ['name']
 
-    ordering = ('balance',)
+    ordering = ['balance',]
 
 
 @admin.register(Transaction)
@@ -23,4 +23,4 @@ class TransactionAdmin(admin.ModelAdmin):
 
     list_filter = ['date_time', 'type_trans', 'wallet']
 
-    ordering = ('amount', 'date_time')
+    ordering = ['amount', 'date_time']
