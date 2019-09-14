@@ -26,8 +26,6 @@ class UserCreateView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-
-
 class UserLogInView(ObtainAuthToken, APIView):
 
     permission_classes = (permissions.AllowAny,)
@@ -39,7 +37,6 @@ class UserLogInView(ObtainAuthToken, APIView):
         user = serializer.validated_data['user']
         token, created = Token.objects.get_or_create(user=user)
         return Response({'token': token.key}, status=status.HTTP_200_OK)
-
 
 
 class UserLogOutView(APIView):
