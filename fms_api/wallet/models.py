@@ -5,7 +5,11 @@ from django.utils.translation import ugettext as _
 
 class Wallet(models.Model):
 
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='wallets', on_delete=models.CASCADE)
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        related_name='wallets',
+        on_delete=models.CASCADE
+    )
     name = models.CharField(_('Wallet name'), max_length=20, unique=True)
     balance = models.DecimalField(max_digits=7, decimal_places=2, default=0.00)
 
@@ -22,7 +26,7 @@ class Wallet(models.Model):
 
     def trans_operation(self, amount, type):
 
-        if type == 'Contribution':
+        if type.CONTRIBUTION:
             self.balance += amount
             return self.save()
         else:
@@ -32,10 +36,16 @@ class Wallet(models.Model):
 
 class Transaction(models.Model):
 
+    WRITE_OFF = 1
+    CONTRIBUTION = 2
     TYPE_TRANSACTION_CHOICES = [
         (
-            'WriteOff',
+            CONTRIBUTION,
             'Contribution'
+        ),
+        (
+            WRITE_OFF,
+            'Write-off'
         ),
     ]
 
@@ -43,13 +53,12 @@ class Transaction(models.Model):
     date_time = models.DateTimeField(_('Transaction date'), auto_now_add=True)
     wallet = models.ForeignKey(
         Wallet,
-        required=True,
         related_name='transactions',
         on_delete=models.CASCADE
     )
     type = models.CharField(
         choices=TYPE_TRANSACTION_CHOICES,
-        required=True,
+        max_length=20
     )
 
     class Meta:
@@ -58,9 +67,7 @@ class Transaction(models.Model):
         ordering = ('date_time',)
 
     def __str__(self):
-        from_user = ' From: ' + self.from_wallet.user.username
-        from_to = from_user + ' To: ' + self.to_wallet.user.username
-        return str(self.amount) + from_to + ' ' + str(self.date_time)
+        return self.type + ' ' + str(self.amount) + ' ' + str(self.date_time)
 
     def save(self, *args, **kwargs):
         """Checking the validity of the operation"""
