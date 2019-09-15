@@ -25,7 +25,7 @@ SECRET_KEY = 'w3cfharr%s%09r(0(=smnftttpoq$i-@o7im1ci0ezvt_&v^f5'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 #for django toolbar
 INTERNAL_IPS = [

@@ -43,7 +43,7 @@ class UserLogOutView(APIView):
 
     permission_classes = (permissions.IsAuthenticated,)
 
-    def get(self, request, format=None):
+    def post(self, request, format=None):
         request.user.auth_token.delete()
         msg = ('You have successfully logged out the application')
         return Response({'message': msg}, status=status.HTTP_200_OK)
@@ -53,7 +53,7 @@ class UserDeleteView(APIView):
 
     permission_classes = (permissions.IsAuthenticated,)
 
-    def get(self, request, format=None):
+    def delete(self, request, format=None):
         request.user.delete()
         msg = ('Your account has been successfully deleted')
         return Response({'message': msg}, status=status.HTTP_200_OK)

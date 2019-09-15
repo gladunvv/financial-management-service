@@ -80,7 +80,7 @@ class Transaction(models.Model):
         ordering = ('-date_time',)
 
     def __str__(self):
-        return 'Transfer: {}'.fromat(self.amount)
+        return 'Transfer: {}'.format(self.amount)
 
     def save(self, *args, **kwargs):
         """Checking the validity of the operation"""
@@ -88,11 +88,11 @@ class Transaction(models.Model):
         print(has_enough_money)
         if not has_enough_money:
             return {
-                'error': _('There are not enough funds in your wallet'),
+                'error': 'There are not enough funds in your wallet'
             }
         elif self.amount <= 0:
             return {
-                'error': _('Attention the transaction amount must be positive'),
+                'error': 'Attention the transaction amount must be positive',
             }
         else:
             #Wallet balance update
