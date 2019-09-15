@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
 
     'wallet.apps.WalletConfig',
+    'user.apps.UserConfig',
 ]
 
 REST_FRAMEWORK = {
