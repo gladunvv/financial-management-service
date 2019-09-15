@@ -37,7 +37,10 @@ class OneWalletView(APIView):
     def delete(self, request, pk):
         wallet = get_object_or_404(Wallet, pk=pk)
         wallet.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        msg = {
+            'message': 'Your wallet has been successfully deleted'
+        }
+        return Response(msg, status=status.HTTP_200_OK)
 
 
 class CreateWalletView(APIView):
@@ -96,4 +99,7 @@ class DeleteTransactionView(APIView):
     def delete(self, request, pk):
         transaction = get_object_or_404(Transaction, pk=pk)
         transaction.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        msg = {
+            'message': 'Your transaction was successfully deleted'
+        }
+        return Response(msg, status=status.HTTP_200_OK)

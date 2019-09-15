@@ -115,3 +115,23 @@ class UserApiTests(TestCase):
 
         res = get_user_model().objects.filter(username='testName')
         self.assertFalse(res)
+
+    def test_create_more_then_one_user(self):
+        context = [
+        {
+            'email': 'test@twix.com',
+            'password': 'testpass',
+            'username': 'testName',
+        },
+        {
+            'email': 'test@snikers.com',
+            'password': 'testpass',
+            'username': 'testNameNew',
+        }
+        ]
+        for data in context:
+            self.client.post(CREATE_USER_URL, data)
+
+        user = get_user_model().objects.all()
+
+        self.assertEqual(len(user), 1)
