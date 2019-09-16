@@ -14,7 +14,7 @@ Simple financial management service on django rest framework
   * Wallet
   * Transaction
 + [Особенности](#особенности)
-+ [Примеры ответа](#примеры-ответа-от-сервера)
++ [Примеры ответа](#примеры-ответа)
   * [Endpoint 1](#endpoint-1)
   * [Endpoint 2](#endpoint-2)
   * [Endpoint 3](#endpoint-3)
@@ -42,7 +42,7 @@ Simple financial management service on django rest framework
 + djangorestframework==3.10.3
 + flake8==3.7.8
 
-### Сборка и запуск проекта 
+### Сборка и запуск:
 ```
 git clone git@github.com:gladunvv/financial-management-service.git
 cd financial-management-service/
