@@ -1,3 +1,7 @@
+
+![](https://travis-ci.org/gladunvv/financial-management-service.svg?branch=master)
+[![codecov](https://codecov.io/gh/gladunvv/financial-management-service/branch/master/graph/badge.svg)](https://codecov.io/gh/gladunvv/financial-management-service)
+
 # financial-management-service
 Simple financial management service on django rest framework
 
