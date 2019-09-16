@@ -1,5 +1,6 @@
 
-![](https://travis-ci.org/gladunvv/financial-management-service.svg?branch=master)
+[![Build Status](https://travis-ci.org/gladunvv/financial-management-service.svg?branch=master)](https://travis-ci.org/gladunvv/financial-management-service)
+
 [![codecov](https://codecov.io/gh/gladunvv/financial-management-service/branch/master/graph/badge.svg)](https://codecov.io/gh/gladunvv/financial-management-service)
 
 # financial-management-service
