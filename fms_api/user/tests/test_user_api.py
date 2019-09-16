@@ -1,5 +1,4 @@
 from django.test import TestCase
-from rest_framework.authtoken.models import Token
 from rest_framework.test import APIClient
 from django.contrib.auth import get_user_model
 from rest_framework import status
@@ -117,13 +116,11 @@ class UserApiTests(TestCase):
         self.assertFalse(res)
 
     def test_create_more_then_one_user(self):
-        context = [
-        {
+        context = [{
             'email': 'test@twix.com',
             'password': 'testpass',
             'username': 'testName',
-        },
-        {
+        }, {
             'email': 'test@snikers.com',
             'password': 'testpass',
             'username': 'testNameNew',

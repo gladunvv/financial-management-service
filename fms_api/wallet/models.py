@@ -95,7 +95,7 @@ class Transaction(models.Model):
                 'error': 'Attention the transaction amount must be positive',
             }
         else:
-            #Wallet balance update
+            # Wallet balance update
             self.wallet.trans_operation(self.amount, self.type_trans)
 
             return super(Transaction, self).save(*args, **kwargs)

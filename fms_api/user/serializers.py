@@ -4,19 +4,20 @@ from django.contrib.auth.models import User
 
 from django.utils.translation import ugettext_lazy as _
 
+
 class UserSerializer(serializers.ModelSerializer):
 
     username = serializers.CharField(
         max_length=32,
         validators=[UniqueValidator(
-        queryset=User.objects.all()
-        )]
+        queryset=User.objects.all())
+        ]
     )
     email = serializers.EmailField(
         required=True,
         validators=[UniqueValidator(
-        queryset=User.objects.all()
-        )]
+        queryset=User.objects.all())
+        ]
     )
     password = serializers.CharField(min_length=8, write_only=True)
 
@@ -33,7 +34,6 @@ class UserSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError(msg, code='authentication')
 
         return user
-
 
     class Meta:
         model = User

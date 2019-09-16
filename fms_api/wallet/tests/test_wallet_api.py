@@ -1,11 +1,10 @@
 from django.test import TestCase
 from django.urls import reverse
-from django.contrib.auth import get_user_model
 
 from rest_framework import status
 from rest_framework.test import APIClient
 
-from wallet.models import Transaction, Wallet
+from wallet.models import Wallet
 
 
 CREATE_USER_URL = reverse('user:create')
@@ -16,7 +15,7 @@ CREATE_WALLET_URL = reverse('wallet:wallet_create')
 
 
 class WalletApiTests(TestCase):
-    
+
     def setUp(self):
         context = {
             'email': 'test@twix.com',

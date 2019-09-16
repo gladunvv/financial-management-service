@@ -1,5 +1,4 @@
 from rest_framework import serializers
-from django.contrib.auth.models import User
 
 from wallet.models import Wallet, Transaction
 
@@ -30,14 +29,14 @@ class TransactionSerializer(serializers.ModelSerializer):
             if search_error:
                 raise serializers.ValidationError({'detail': search_error})
 
+
 class WalletWithTransSerializer(serializers.ModelSerializer):
 
     transactions = TransactionSerializer(many=True)
-    
+
     class Meta:
         model = Wallet
         fields = ('id', 'name', 'balance', 'transactions')
-
 
 
 class WalletSerializer(serializers.ModelSerializer):

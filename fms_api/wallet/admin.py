@@ -11,7 +11,7 @@ class WalletAdmin(admin.ModelAdmin):
 
     search_fields = ['name']
 
-    ordering = ['balance',]
+    ordering = ['balance', ]
 
 
 @admin.register(Transaction)

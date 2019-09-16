@@ -16,7 +16,7 @@ DELETE_TRANSACTION_URL = reverse('wallet:trans_delete', kwargs={'pk': 1})
 
 
 class WalletApiTests(TestCase):
-    
+
     def setUp(self):
         context = {
             'email': 'test@twix.com',
@@ -94,7 +94,6 @@ class WalletApiTests(TestCase):
         transactions = Transaction.objects.all()
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.assertEqual(len(transactions), 3)
-
 
     def test_create_transaction_not_wallet(self):
         context = {
