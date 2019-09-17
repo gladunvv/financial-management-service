@@ -85,7 +85,6 @@ class Transaction(models.Model):
     def save(self, *args, **kwargs):
         """Checking the validity of the operation"""
         has_enough_money = self.wallet.can_send(self.amount, self.type_trans)
-        print(has_enough_money)
         if not has_enough_money:
             return {
                 'error': 'There are not enough funds in your wallet'

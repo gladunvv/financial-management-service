@@ -1,6 +1,5 @@
 
 [![Build Status](https://travis-ci.org/gladunvv/financial-management-service.svg?branch=master)](https://travis-ci.org/gladunvv/financial-management-service)
-
 [![codecov](https://codecov.io/gh/gladunvv/financial-management-service/branch/master/graph/badge.svg)](https://codecov.io/gh/gladunvv/financial-management-service)
 
 # financial-management-service
@@ -85,7 +84,7 @@ python manage.py runserver
 + Transaction:
   * Create: 
   POST http://127.0.0.1:8000/api/v1/wallet/transaction/create/
-  * All-transactions:
+  * All-Transactions:
   GET http://127.0.0.1:8000/api/v1/wallet/transaction/all/
   * Delete:
   DELETE http://127.0.0.1:8000/api/v1/wallet/transaction/delete/
